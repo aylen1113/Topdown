@@ -9,7 +9,8 @@ public class Enemy : MonoBehaviour
     public PlayerHealth playerHealth;
     public int damageAmount = 10;
     public float detectionRange = 5f;
-    //public GameObject coinPrefab;
+    public GameObject coinPrefab;
+    public GameManager manager;
 
 
 
@@ -18,6 +19,7 @@ public class Enemy : MonoBehaviour
     {
 
         player = FindObjectOfType<PlayerMovement>().transform;
+        manager = GameManager.instance;
     }
 
   
@@ -38,6 +40,9 @@ public class Enemy : MonoBehaviour
 
             Destroy(collision.gameObject);
             Destroy(gameObject);
+          manager.EnemyKilled();
+            Debug.Log("enemy killed");
+            Disappear();
 
         }
 
@@ -52,9 +57,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    //private void Disappear()
-    //{
-    //    Destroy(gameObject);
-    //    //Instantiate(coinPrefab, transform.position, Quaternion.identity);
-    //}
+    private void Disappear()
+    {
+        Destroy(gameObject);
+        Instantiate(coinPrefab, transform.position, Quaternion.identity);
+    }
 }

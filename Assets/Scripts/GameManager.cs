@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     public VictoryScreen victoryScreen;
 
+    public Text coinText;
+    public int currentCoins;
 
     void Awake()
     {
@@ -25,8 +27,13 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    void Start()
+    {
+        coinText.text = "COINS: " + currentCoins.ToString();
 
-   
+    }
+
+
     public void EnemyKilled()
     {
         enemiesKilled++;
@@ -38,5 +45,17 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0f;
         }
     }
+    public void IncreaseCoins(int v)
+    {
+        currentCoins += v;
+        coinText.text = "COINS: " + currentCoins.ToString();
+    }
+
+    public int GetCurrentCoins()
+    {
+        return currentCoins;
+    }
 }
+
+
 
