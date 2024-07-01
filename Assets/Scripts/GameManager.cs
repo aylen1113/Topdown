@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance; 
+    public static GameManager Instance { get; private set; }
     private int enemiesKilled = 0; 
     public int winCondition = 10;
 
@@ -18,9 +18,9 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
        
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
         else
         {

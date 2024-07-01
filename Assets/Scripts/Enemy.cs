@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public float speed;
     Transform player;
-    public PlayerHealth playerHealth;
+    private PlayerHealth playerHealth;
     public int damageAmount = 10;
     public float detectionRange = 5f;
     public GameObject coinPrefab;
@@ -19,7 +19,8 @@ public class Enemy : MonoBehaviour
     {
 
         player = FindObjectOfType<PlayerMovement>().transform;
-        manager = GameManager.instance;
+        playerHealth = FindObjectOfType<PlayerHealth>();
+        manager = GameManager.Instance;
     }
 
   

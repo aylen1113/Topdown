@@ -13,7 +13,7 @@ public class Coin : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             CollectCoin();
-           GameManager.instance.IncreaseCoins(coinValue);
+           GameManager.Instance.IncreaseCoins(coinValue);
 
         }
     }
