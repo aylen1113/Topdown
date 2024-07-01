@@ -20,10 +20,20 @@ public class GameOverScreen : MonoBehaviour
     {
 
         gameOverPanel.SetActive(true);
-
-
-
+        StartCoroutine(WaitForClickToRestart());
     }
 
+    private IEnumerator WaitForClickToRestart()
+    {
+        while (!Input.GetMouseButtonDown(0)) 
+        {
+            yield return null;
+        }
+        RestartGame();
+    }
 
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); 
+    }
 }
